@@ -15,9 +15,8 @@ gu install native-image
 
 ## create executable with graal
 
-sbt graalvm-native-image:packageBin
+`sbt graalvm-native-image:packageBin`
 
 ## create jar with sbt assembly
 
-sbt assembly
-
+`sbt assembly`
