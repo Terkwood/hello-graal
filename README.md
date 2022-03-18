@@ -1,10 +1,17 @@
 # scala 3 + graalvm
 
-based on a helpful example: https://github.com/olofwalker/ting
+This work is based on a helpful example: https://github.com/olofwalker/ting
+
+We didn't configure any reflection, so you won't get very far with this setup until you figure that out.
+
+See also:
+
+- https://www.vandebron.tech/blog/building-native-images-and-compiling-with-graalvm-and-sbt
+- https://www.inner-product.com/posts/serverless-scala-services-with-graalvm/
 
 ## prereqs
 
-install graalvm use it. install graal native-image.
+Install graalvm JDK and graal's native-image.
 
 ```sh
 sdk install java  22.0.0.2.r17-grl
@@ -15,15 +22,19 @@ gu install native-image
 
 ## create executables
 
-with graal
+With graal:
 
 `sbt graalvm-native-image:packageBin`
 
-with sbt assembly
+With sbt assembly:
 
 `sbt assembly`
 
 ## look at memory usage across the two impls
+
+See "Maximum resident set size".
+
+I got 6500 KB for graal vs 97348 KB for the assembly jar.
 
 ```sh
 /usr/bin/time -v target/graalvm-native-image/hello-graal
